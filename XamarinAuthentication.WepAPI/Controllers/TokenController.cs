@@ -9,9 +9,9 @@ using System.Web.Http;
 using XamarinAuthentication.Entities.Models;
 
 namespace XamarinAuthentication.WepAPI.Controllers {
-     // [RoutePrefix("api/token")]
+      //[RoutePrefix("api/token")]
+      [AllowAnonymous]
       public class TokenController : ApiController {
-            [AllowAnonymous] 
             public string Get(string email, string password) {
                   if(CheckUser(email, password)) {
                         return JwtManager.GenerateToken(email);

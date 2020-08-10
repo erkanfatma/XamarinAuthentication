@@ -20,6 +20,11 @@ namespace XamarinAuthentication.Mobile.Views {
             private async void LoginButton_Clicked(object sender, EventArgs e) {
                   var result = await accountManager.LoginAsync(new LoginViewModel { Email = EmailEntry.Text, Password = PasswordEntry.Text });
                   TokenLabel.Text = result;
+                  Application.Current.Properties["AUTHORIZATIONTOKEN"] = result;
+                  await Navigation.PushAsync(new NavigationPage(new NotePage()));
+                  
+
             }
       }
 }
+ 

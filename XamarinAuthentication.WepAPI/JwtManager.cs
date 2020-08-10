@@ -15,7 +15,7 @@ namespace XamarinAuthentication.WepAPI {
             /// </summary>
             private const string Secret = "db3OIsj+BXE9NZDy0t8W3TcNekrF+2d/1sFnWG4HnV8TZY30iTOdtVWJG8abWvB1GlOgJuQZdcF2Luqm/hccMw==";
 
-            public static string GenerateToken(string email, int expireDays = 20) {
+            public static string GenerateToken(string id, int expireDays = 200) {
                   var symmetricKey = Convert.FromBase64String(Secret);
                   var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -23,7 +23,7 @@ namespace XamarinAuthentication.WepAPI {
                   var tokenDescriptor = new SecurityTokenDescriptor {
                         Subject = new ClaimsIdentity(new[]
                               {
-                            new Claim(ClaimTypes.Name, email)
+                            new Claim(ClaimTypes.Name, id)
                         }),
 
                         Expires = now.AddDays(Convert.ToInt32(expireDays)),

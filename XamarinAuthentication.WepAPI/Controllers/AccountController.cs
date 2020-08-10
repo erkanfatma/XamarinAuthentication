@@ -17,7 +17,7 @@ namespace XamarinAuthentication.WepAPI.Controllers {
                   using(var context = new AuthContext()) {
                         var user = context.Users.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
                         if(user != null) {
-                              return JwtManager.GenerateToken(model.Email);
+                              return JwtManager.GenerateToken(user.UserId.ToString());
                         }
                   }
                   throw new HttpResponseException(HttpStatusCode.Unauthorized);

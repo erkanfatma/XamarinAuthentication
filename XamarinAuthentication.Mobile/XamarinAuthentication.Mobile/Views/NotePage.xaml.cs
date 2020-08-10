@@ -14,13 +14,13 @@ namespace XamarinAuthentication.Mobile.Views {
       public partial class NotePage : ContentPage {
             NoteManager noteManager = new NoteManager();
             IEnumerable<NoteViewModel> noteList = new List<NoteViewModel>();
-            public NotePage(int userId) {
+            public NotePage() {
                   InitializeComponent();
-                  LoadDataAsync(userId);
+                  LoadDataAsync();
             }
 
-            private async void LoadDataAsync(int userId) {
-                  noteList = await noteManager.GetAll(userId);
+            private async void LoadDataAsync() {
+                  noteList = await noteManager.GetAll();
                   NoteListView.ItemsSource = noteList;
             }
       }

@@ -6,11 +6,9 @@ using System.Net.Http;
 using System.Web.Http;
 using XamarinAuthentication.WepAPI.Filters;
 
-namespace XamarinAuthentication.WepAPI.Controllers {
-   //   [RoutePrefix("api/value")]
+namespace XamarinAuthentication.WepAPI.Controllers { 
       public class ValueController : ApiController {
-            [JwtAuthentication]
-       //     [HttpGet]
+            [JwtAuthentication] 
             public string Get() {
                   return "value";
             }
