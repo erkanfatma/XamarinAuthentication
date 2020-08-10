@@ -7,7 +7,10 @@
              x:Class="XamarinAuthentication.Mobile.Views.NotePage" >
     <ContentPage.Content>
         <StackLayout Margin="10,10">
-            <ListView HasUnevenRows="True" x:Name="NoteListView" ItemsSource="{Binding .}">
+            <Entry x:Name="TitleEntry"/>
+            <Entry x:Name="DescriptionEntry"/>
+            <Button x:Name="AddNoteButton" Clicked="AddNoteButton_Clicked"></Button>
+            <ListView HasUnevenRows="True" x:Name="NoteListView" ItemsSource="{Binding .}" ItemSelected="NoteListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

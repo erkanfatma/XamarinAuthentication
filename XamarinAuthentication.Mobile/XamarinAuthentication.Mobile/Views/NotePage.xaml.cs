@@ -23,5 +23,24 @@ namespace XamarinAuthentication.Mobile.Views {
                   noteList = await noteManager.GetAll();
                   NoteListView.ItemsSource = noteList;
             }
+
+            private async void AddNoteButton_Clicked(object sender, EventArgs e) {
+                  var result = await noteManager.Add(new NoteViewModel { Description = DescriptionEntry.Text, Title = TitleEntry.Text });
+                  if(result)
+                        await DisplayAlert("", "Added successfully", "OK");
+                  else
+                        await DisplayAlert("", "Error occured", "OK");   
+            }
+
+            private async void NoteListView_ItemSelected(object sender, SelectedItemChangedEventArgs e) {
+                  if(e.SelectedItem == null)
+                        return;
+
+                  NoteViewModel selected = (NoteViewModel)e.SelectedItem;
+                  var note = await noteManager.Get(selected.NoteId);
+                  await DisplayAlert(note.Title, note.Description, "OK");
+                  ListView listView = (ListView)sender;
+                  listView.SelectedItem = null;
+            }
       }
 }

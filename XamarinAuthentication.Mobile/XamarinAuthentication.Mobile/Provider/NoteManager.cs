@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinAuthentication.Mobile.Models.ViewModels;
@@ -30,6 +31,20 @@ namespace XamarinAuthentication.Mobile.Provider {
                   var json = await client.GetStringAsync($"{Url}");
                   return JsonConvert.DeserializeObject<IEnumerable<NoteViewModel>>(json);
             }
-      }
+
+            public async Task<bool> Add(NoteViewModel model) {
+                  var client = await GetClient();
+                  var json = await client.PostAsync(Url + "", new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json"));
+                  var result = JsonConvert.DeserializeObject<bool>(await json.Content.ReadAsStringAsync());
+                  return result;
+            }
+
+            public async Task<NoteViewModel> Get(int noteId) {
+                  client = await GetClient();
+                  var json = await client.GetStringAsync(Url + "get/" + noteId.ToString());
+                  var result = JsonConvert.DeserializeObject<NoteViewModel>(json);
+                  return result;
+            }
+      } 
 }
  
