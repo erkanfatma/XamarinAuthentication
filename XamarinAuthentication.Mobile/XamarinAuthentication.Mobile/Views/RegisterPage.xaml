@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinAuthentication.Mobile.Views.RegisterPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Margin="10,10">
+            <Entry x:Name="FullNameEntry" Placeholder="Full Name"/>
+            <Entry x:Name="EmailEntry" Placeholder="Email"></Entry>
+            <Entry x:Name="PasswordEntry" Placeholder="Password"></Entry>
+            <Button x:Name="RegisterButton" Clicked="RegisterButton_Clicked" Text="Register" BackgroundColor="Orange"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
